@@ -19,6 +19,10 @@
 
        <p>distance: <span ng-bind="smn['distance']"></span>km</p>
 
+       <p><a href="https://www.google.ch/maps/dir/{{position.coords.latitude}},{{position.coords.longitude}}/{{smn.station.lat}},{{smn.station.lng}}">get there</a></p>
+
+       <hr>
+       
        <p>code: <span ng-bind="smn['code']"></span></p>
 
        <p>dateTime: <span ng-bind="smn['dateTime']"></span></p>
