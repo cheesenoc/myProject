@@ -1,0 +1,299 @@
+#%RAML 0.8
+title: Steroids Data
+mediaType: application/json
+baseUri: https://rest-api.appgyver.com/v1/
+
+traits:
+  - securedBySteroidsApiKey:
+      headers:
+        steroidsApiKey:
+          type: string
+          example: exampleapikey
+          default: a03fc1b3c19f0089bace2f131313a5e8d80ac1c922a78b3e7dee9208dc0490ac
+        steroidsAppId:
+          type: integer
+          example: 1234
+          default: 29819
+
+schemas:
+  - superheros: '{"$schema":"http://json-schema.org/schema","title":"superhero collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical superhero representation","properties":{"name":{"type":"string"},"alter_ego":{"type":"string"},"publisher":{"type":"string"}},"required":[]}}}}'
+  - superhero: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical superhero representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"alter_ego":{"type":"string"},"publisher":{"type":"string"}},"required":[]}}}'
+
+resourceTypes:
+  - dolan_db_collection:
+      usage: This resourceType should be used for any collection of items
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "collection"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "objects"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>> # e.g cars
+      post:
+        description: |
+          {
+            "action": "create",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName | !singularize>>
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName | !singularize>> # e.g. car
+
+  - dolan_db_member:
+      usage: This resourceType should be used for any built.io item
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "find"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>> # e.g. car
+      put:
+        description: |
+          {
+            "action": "update",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName | !singularize>>
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>
+      delete:
+        description: |
+          {
+            "action": "destroy"
+          }
+        responses:
+          200:
+      
+
+
+/superhero:
+  description: |
+    {
+      "resourceName": "superhero",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/beer:
+  description: |
+    {
+      "resourceName": "beer",
+      "identifierKey": "id"
+    }
+  post:
+    is: [ securedBySteroidsApiKey ]
+    description: |
+      {
+        "action": "create"
+      }
+  
+    responses:
+      200:
+        description: |
+          {
+          }
+  
+        body:
+          application/json:
+            schema: |
+              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}
+  
+
+  /.json:
+    get:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "collection"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+              "rootKey": "beers"
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","title":"beer collection","type":"object","properties":{"beers":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}}}}
+    
+
+  /{id}.json:
+    get:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "find"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}
+    
+
+  /{id}:
+    put:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "update"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}
+    
+    delete:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "destroy"
+        }
+    
+      responses:
+        200:
+
+/smn:
+  description: |
+    {
+      "resourceName": "smn",
+      "identifierKey": "code"
+    }
+  get:
+    is: [ securedBySteroidsApiKey ]
+    description: |
+      {
+        "action": "collection"
+      }
+  
+    responses:
+      200:
+        description: |
+          {
+          }
+  
+        body:
+          application/json:
+            schema: |
+              {"$schema":"http://json-schema.org/schema","title":"smn collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}}
+  
+  post:
+    is: [ securedBySteroidsApiKey ]
+    description: |
+      {
+        "action": "create"
+      }
+  
+    responses:
+      200:
+        description: |
+          {
+          }
+  
+        body:
+          application/json:
+            schema: |
+              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
+  
+
+  /{id}:
+    get:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "find"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
+    
+    put:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "update"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
+    
+    delete:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "destroy"
+        }
+    
+      responses:
+        200:
+
+
