@@ -4,11 +4,17 @@ angular
     $scope.smn = null
     $scope.showSpinner = true
     $scope.dataId = undefined
-    position =
-      coords:
-        latitude: 46.9
-        longitude: 7.47
-    $scope.position = position
+
+    # $scope.getPosition = () ->
+    #   position =
+    #     coords:
+    #       latitude: 46.9
+    #       longitude: 7.47
+    #   $scope.position = position
+
+    $scope.getPosition = () ->
+      supersonic.device.geolocation.getPosition().then (position) ->
+        $scope.position = position
 
     _refreshViewData = ->
       Smn.find($scope.dataId).then (smn) ->
@@ -20,6 +26,7 @@ angular
           $scope.showSpinner = false
 
     supersonic.ui.views.current.whenVisible ->
+      $scope.getPosition()
       _refreshViewData() if $scope.dataId
 
     supersonic.ui.views.current.params.onValue (values) ->
