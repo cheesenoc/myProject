@@ -9,17 +9,19 @@
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
 
-       <i class="icon" ng-class="smn['icon']"></i>
+       <i class="icon icon-big" ng-class="smn['icon']"></i>
 
-       <p>distance: <span ng-bind="smn['distance']"></span></p>
+       <p>temperature: <span ng-bind="smn['temperature']"></span>&deg;</p>
+
+       <p>sunshine in last 10': <span ng-bind="smn['sunshine']"></span>'</p>
+
+       <p><a href="http://www.lookr.com/map#ll={{smn.station.lat}},{{smn.station.lng}}&spn=0.05,0.05">check nearby webcams</a></p>
+
+       <p>distance: <span ng-bind="smn['distance']"></span>km</p>
 
        <p>code: <span ng-bind="smn['code']"></span></p>
 
        <p>dateTime: <span ng-bind="smn['dateTime']"></span></p>
-
-       <p>temperature: <span ng-bind="smn['temperature']"></span></p>
-
-       <p>sunshine: <span ng-bind="smn['sunshine']"></span></p>
 
        <p>precipitation: <span ng-bind="smn['precipitation']"></span></p>
 
