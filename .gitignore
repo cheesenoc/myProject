@@ -1,4 +1,5 @@
 .DS_Store
+solskin.keystore
 /dist
 node_modules
 bower_components
