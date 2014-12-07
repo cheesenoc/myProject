@@ -1,0 +1,41 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Solskin
+    </super-navbar-title>
+  </super-navbar>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <!-- <button class="button button-block button-positive" ng-click="getPosition()">Refresh</button>
+    <ul class="list" ng-show="position">
+      <li class="item">Latitude: {{position.coords.latitude}}</li>
+      <li class="item">Longitude: {{position.coords.longitude}}</li>
+    </ul> -->
+
+    <div class="button-bar">
+      <a class="button" ng-click="predicate = 'icon'; reverse=true" ng-class="{'active' : predicate == 'icon'}">Sun</a>
+      <a class="button" ng-click="predicate = 'name'; reverse=false" ng-class="{'active' : predicate == 'name'}">Name</a>
+      <a class="button" ng-click="predicate = 'distance'; reverse=false" ng-class="{'active' : predicate == 'distance'}">Distance</a>
+    </div>
+
+    <ul class="list" ng-hide="smns.length == 0">
+
+      <super-navigate location="smn#show" data-params-id="{{ smn.id }}" ng-repeat="smn in smns | orderBy:predicate:reverse">
+        <li class="item item-icon-left item-icon-right">
+          <i class="icon" ng-class="smn['icon']"></i>
+          <span ng-bind="smn['station'].name"></span>
+          <span class="item-note">km</span>
+          <span class="item-note" ng-bind="smn['distance']"></span>
+          <i class="icon super-ios7-arrow-right"></i>
+        </li>
+      </super-navigate>
+
+    </ul>
+
+    <h4 ng-show="smns.length == 0" class="assertive padding">
+      Sorry, no smns found.
+    </h4>
+
+  </div>
+</div>

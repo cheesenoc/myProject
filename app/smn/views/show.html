@@ -1,0 +1,51 @@
+<div ng-controller="ShowController">
+  <super-navbar>
+    <super-navbar-title ng-bind="smn['station'].name">
+
+    </super-navbar-title>
+  </super-navbar>
+
+  <div class="padding">
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner">
+
+       <i class="icon" ng-class="smn['icon']"></i>
+
+       <p>distance: <span ng-bind="smn['distance']"></span></p>
+
+       <p>code: <span ng-bind="smn['code']"></span></p>
+
+       <p>dateTime: <span ng-bind="smn['dateTime']"></span></p>
+
+       <p>temperature: <span ng-bind="smn['temperature']"></span></p>
+
+       <p>sunshine: <span ng-bind="smn['sunshine']"></span></p>
+
+       <p>precipitation: <span ng-bind="smn['precipitation']"></span></p>
+
+       <p>windDirection: <span ng-bind="smn['windDirection']"></span></p>
+
+       <p>windSpeed: <span ng-bind="smn['windSpeed']"></span></p>
+
+       <p>qnhPressure: <span ng-bind="smn['qnhPressure']"></span></p>
+
+       <p>gustPeak: <span ng-bind="smn['gustPeak']"></span></p>
+
+       <p>humidity: <span ng-bind="smn['humidity']"></span></p>
+
+       <p>qfePressure: <span ng-bind="smn['qfePressure']"></span></p>
+
+       <p>qffPressure: <span ng-bind="smn['qffPressure']"></span></p>
+
+      <!-- <super-modal-show location="smn#edit?id={{ smn.id }}">
+        <button class="button button-block button-positive">
+          Edit
+        </button>
+      </super-modal-show>
+
+      <button ng-click="remove(smn.id)" class="button button-block button-negative">
+        Remove
+      </button> -->
+    </div>
+  </div>
+</div>
