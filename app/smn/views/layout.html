@@ -16,9 +16,15 @@
   <script src="/components/supersonic/supersonic.js"></script>
   <script src="/components/webcomponentsjs/webcomponents.js"></script>
 
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript"
+  src="//maps.googleapis.com/maps/api/js?libraries=adsense&key=AIzaSyANLx0neHWjy6CDWbBBq4FULOW0cM5lJTE"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/mobile-detect.js/0.4.2/mobile-detect.min.js"></script>
+
   <% _.each(yield.modules, function(module) { %>
   <script src="/app/<%= module %>.js"></script>
   <% }); %>
+  
 </head>
 <body ng-app="<%= yield.moduleName %>" class="content">
 

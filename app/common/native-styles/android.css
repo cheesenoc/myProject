@@ -64,10 +64,10 @@ tab-bar-item#settings {
   background-image: url(icons/cog.svg);
 }
 
-tab-bar-item#index {
+tab-bar-item#list {
   background-image: url(icons/home.svg);
 }
 
-tab-bar-item#internet {
+tab-bar-item#map {
   background-image: url(icons/search.svg);
 }

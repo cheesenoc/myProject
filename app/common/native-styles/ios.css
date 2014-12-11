@@ -34,22 +34,14 @@ tab-bar tab-bar-item:selected {
   color: #1596f7;
 }
 
+tab-bar-item#list {
+  background-image: url(icons/home.svg);
+}
+
+tab-bar-item#map {
+  background-image: url(icons/search.svg);
+}
+
 tab-bar-item#settings {
   background-image: url(icons/cog.svg);
-}
-
-tab-bar-item#index {
-  background-image: url(icons/home.svg);
-}
-
-tab-bar-item#internet {
-  background-image: url(icons/search.svg);
-}
-
-tab-bar-item#superhero {
-  background-image: url(icons/search.svg);
-}
-
-tab-bar-item#geolocation {
-  background-image: url(icons/home.svg);
 }

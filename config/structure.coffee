@@ -2,42 +2,22 @@
 
 module.exports =
 
-  # See styling options for tabs and other native components in app/common/native-styles/ios.css or app/common/native-styles/android.css
-  # tabs: [
-  #   {
-  #     title: "Beer"
-  #     id: "beer"
-  #     location: "beer#index" # Supersonic module#view type navigation
-  #   }
-  #   {
-  #     title: "Superhero"
-  #     id: "superhero"
-  #     location: "superhero#index" # Supersonic module#view type navigation
-  #   }
-  #   {
-  #     title: "Index"
-  #     id: "index"
-  #     location: "example#getting-started" # Supersonic module#view type navigation
-  #   }
-  #   {
-  #     title: "Settings"
-  #     id: "settings"
-  #     location: "example#settings"
-  #   }
-  #   {
-  #     title: "Geolocation"
-  #     id: "geolocation"
-  #     location: "geolocation#index"
-  #   }
-  #   {
-  #     title: "Internet"
-  #     id: "internet"
-  #     location: "http://google.com" # URLs are supported!
-  #   }
-  # ]
+#  See styling options for tabs and other native components in app/common/native-styles/ios.css or app/common/native-styles/android.css
+  tabs: [
+    {
+      title: "List"
+      id: "list"
+      location: "smn#index" # Supersonic module#view type navigation
+    }
+    {
+      title: "Map"
+      id: "map"
+      location: "smn#map" # Supersonic module#view type navigation
+    }
+  ]
 
-  rootView:
-    location: "smn#index"
+  # rootView:
+  #   location: "smn#index"
 
   # preloads: [
   #   {
@@ -50,13 +30,13 @@ module.exports =
   #   }
   # ]
 
-  drawers:
-    left:
-      id: "leftDrawer"
-      location: "example#drawer"
-      showOnAppLoad: false
-    options:
-      animation: "swingingDoor"
+  # drawers:
+  #   left:
+  #     id: "leftDrawer"
+  #     location: "example#drawer"
+  #     showOnAppLoad: false
+  #   options:
+  #     animation: "swingingDoor"
   #
   # initialView:
   #   id: "initialView"

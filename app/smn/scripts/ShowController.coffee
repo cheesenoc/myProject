@@ -5,16 +5,16 @@ angular
     $scope.showSpinner = true
     $scope.dataId = undefined
 
-    # $scope.getPosition = () ->
-    #   position =
-    #     coords:
-    #       latitude: 46.9
-    #       longitude: 7.47
-    #   $scope.position = position
-
     $scope.getPosition = () ->
-      supersonic.device.geolocation.getPosition().then (position) ->
-        $scope.position = position
+      position =
+        coords:
+          latitude: 46.9
+          longitude: 7.47
+      $scope.position = position
+
+    # $scope.getPosition = () ->
+    #   supersonic.device.geolocation.getPosition().then (position) ->
+    #     $scope.position = position
 
     _refreshViewData = ->
       Smn.find($scope.dataId).then (smn) ->
