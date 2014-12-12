@@ -14,10 +14,10 @@ angular
 
       # Create map object on the map element
       demoMap = new google.maps.Map el,
-        zoom: 14
+        zoom: 9
         mapTypeId: google.maps.MapTypeId.ROADMAP
         disableDefaultUI: true
-        draggable: false
+        draggable: true
 
       # Create map marker
       demoAccuracyCircle = new google.maps.Circle
@@ -40,7 +40,19 @@ angular
         demoAccuracyCircle.setCenter newLatLng
         demoAccuracyCircle.setRadius $scope.position.accuracy
 
+      drawStations = ->
+        mMarker = new google.maps.Marker
+          map: demoMap
+        newLatLng2 = new google.maps.LatLng 46.9, 7.47
+        mMarker.setPosition newLatLng2
+        mMarker = new google.maps.Marker
+          map: demoMap
+        newLatLng2 = new google.maps.LatLng 47, 7.42
+        mMarker.setPosition newLatLng2
+
       # Watch for changes in position
       $scope.$watch "position", ->
         updateLocation()
       , true
+
+      drawStations()
