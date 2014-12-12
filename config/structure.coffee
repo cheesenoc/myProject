@@ -14,6 +14,11 @@ module.exports =
       id: "map"
       location: "smn#map" # Supersonic module#view type navigation
     }
+    {
+      title: "geo"
+      id: "geo"
+      location: "smn#geolocation" # Supersonic module#view type navigation
+    }
   ]
 
   # rootView:
