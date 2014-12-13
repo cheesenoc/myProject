@@ -4,7 +4,7 @@
 
   <div class="padding">
     <div class="loading-message" ng-show="isWatchingPosition || isGettingPosition">
-      <img src="/icons/loading.svg" height="26" alt=""> {{isWatchingPosition? "Continuously watching position..." : "Getting position..."}}
+      <img src="/icons/loading.svg" height="26" alt=""> Getting position...
     </div>
     <div class="loading-message" ng-hide="isWatchingPosition || isGettingPosition">
       Ready!
@@ -25,7 +25,7 @@
         <td>Accuracy</td>
         <td>{{position.accuracy}} m</td>
       </tr>
-      <tr ng-hide="position.altitude == undefined">
+      <!-- <tr ng-hide="position.altitude == undefined">
         <td>Altitude</td>
         <td>{{position.altitude}} m</td>
       </tr>
@@ -40,7 +40,7 @@
       <tr ng-hide="position.speed == undefined">
         <td>Speed</td>
         <td>{{position.speed}} m/s</td>
-      </tr>
+      </tr> -->
     </table>
 
     <br>
