@@ -104,3 +104,5 @@ angular
       $scope.$watch "smns", ->
         drawStations()
       , true
+
+      webcamstravel.easymap.load(demoMap);
