@@ -1,11 +1,12 @@
 angular
   .module('smn')
-  .directive 'kitchensinkGoogleMaps', ($window, supersonic) ->
+  .directive 'kitchensinkGoogleMaps', ($window, Smn, supersonic) ->
     restrict: "E"
     template: """<div class="google-maps-container"></div>"""
     replace: true
     scope:
       position: "="
+      smns: "="
     link: ($scope, element, attr) ->
 
       # Create map element
@@ -41,18 +42,33 @@ angular
         demoAccuracyCircle.setRadius $scope.position.accuracy
 
       drawStations = ->
-        mMarker = new google.maps.Marker
-          map: demoMap
-        newLatLng2 = new google.maps.LatLng 46.9, 7.47
-        mMarker.setPosition newLatLng2
-        mMarker = new google.maps.Marker
-          map: demoMap
-        newLatLng2 = new google.maps.LatLng 47, 7.42
-        mMarker.setPosition newLatLng2
+        #http://mapicons.nicolasmollet.com/category/markers/nature/weather/
+        determineIcon = (sunshineMinutes) ->
+          icon = "icon-question.png"
+          if sunshineMinutes
+            if sunshineMinutes >= 9
+              icon = "sunny.png"
+            else if sunshineMinutes >= 3
+              icon = "cloudysunny.png"
+            else icon = "cloudy.png"  if sunshineMinutes >= 0
+          "/icons/" + icon
+        createMarker = (smn) ->
+          latLng = new google.maps.LatLng smn['station'].lat,smn['station'].lng
+          marker = new google.maps.Marker
+            position: latLng
+            map: demoMap
+            title: smn['station'].name
+            id: smn['station'].code
+            icon: determineIcon(smn['sunshine'])
+          google.maps.event.addListener marker, "click", ->
+            window.location = "show.html?id=" + marker.id
+        createMarker smn for smn in $scope.smns
 
       # Watch for changes in position
       $scope.$watch "position", ->
         updateLocation()
       , true
 
-      drawStations()
+      $scope.$watch "smns", ->
+        drawStations()
+      , true
