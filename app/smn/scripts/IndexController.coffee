@@ -3,8 +3,23 @@ angular
   .controller("IndexController", ($scope, Smn, supersonic, CalculationService) ->
     $scope.smns = null
     $scope.showSpinner = true
-    $scope.predicate = 'distance'
+    $scope.sun_predicate = ['-icon','+distance']
+    $scope.predicate = $scope.sun_predicate
     $scope.reverse = false
+
+    refresh = ->
+      Smn.all().whenChanged (smns) ->
+        $scope.$apply ->
+          $scope.smns = smns
+          $scope.getPosition()
+          $scope.showSpinner = false
+
+    update = ->
+      if document.visibilityState == "visible"
+        $scope.showSpinner = true
+        refresh()
+
+    document.addEventListener "visibilitychange", update, false
 
     extendSmn = (smn) ->
       smn['name'] = smn['station'].name
@@ -44,10 +59,6 @@ angular
       $scope.position = position
       extendSmn smn for smn in $scope.smns
 
-    Smn.all().whenChanged (smns) ->
-      $scope.$apply ->
-        $scope.smns = smns
-        $scope.getPosition()
-        $scope.showSpinner = false
+    refresh()
 
   )

@@ -14,14 +14,14 @@
     </ul> -->
 
     <div class="button-bar">
-      <a class="button" ng-click="predicate = 'icon'; reverse=true" ng-class="{'active' : predicate == 'icon'}">Sun</a>
-      <a class="button" ng-click="predicate = 'name'; reverse=false" ng-class="{'active' : predicate == 'name'}">Name</a>
-      <a class="button" ng-click="predicate = 'distance'; reverse=false" ng-class="{'active' : predicate == 'distance'}">Distance</a>
+      <a class="button" ng-click="predicate = sun_predicate" ng-class="{'active' : predicate == sun_predicate}">Sun</a>
+      <a class="button" ng-click="predicate = '+name'" ng-class="{'active' : predicate == '+name'}">Name</a>
+      <a class="button" ng-click="predicate = '+distance'" ng-class="{'active' : predicate == '+distance'}">Distance</a>
     </div>
 
     <ul class="list" ng-hide="smns.length == 0">
 
-      <super-navigate location="smn#show" data-params-id="{{ smn.id }}" ng-repeat="smn in smns | orderBy:predicate:reverse">
+      <super-navigate location="smn#show" data-params-id="{{ smn.id }}" ng-repeat="smn in smns | orderBy:predicate">
         <li class="item item-icon-left item-icon-right">
           <i class="icon" ng-class="smn['icon']"></i>
           <span ng-bind="smn['station'].name"></span>
