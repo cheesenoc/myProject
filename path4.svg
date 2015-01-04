@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-248 340.6 113.4 113.4" enable-background="new -248 340.6 113.4 113.4" xml:space="preserve">
+<rect x="-266.7" y="329.4" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="165.9" height="118.7"/>
+<title>Example triangle01- simple example of a &apos;path&apos;</title>
+<desc>A path that draws a triangle</desc>
+<rect x="-247.7" y="340.9" fill="none" stroke="#0000FF" width="112.8" height="112.8"/>
+<path fill="#FF0000" stroke="#0000FF" stroke-width="3" d="M-144,401.6c12.8,0,23-10.5,23-23.5c0-12.8-10.5-23.8-23.2-23.8h-78.2
+	c-14.2,0-25.5,11.9-25.5,26.1c0,11.3,7.4,20.1,17.3,23.5c1.4,7.9,8.2,14.7,16.7,14.7c2.8,0,5.1-0.6,7.4-1.7
+	c5.4,11.1,16.7,19,29.8,19c18.1,0,33.2-15,33.2-33.2C-143.7,402.4-144,401.8-144,401.6z M-144.3,358.8c10.5,0,18.7,9.1,18.7,19.6
+	c0,10.5-8.2,19-18.7,19h-4.3v6c0,15.9-13,28.1-28.6,28.1c-10.8,0-20.7-6.5-25.5-16.4l-1.7-4l-4,2c-1.7,0.9-3.7,1.4-5.7,1.4
+	c-6.2,0-11.3-4.8-12.5-11.1l-0.3-2.6l-2.6-0.9c-8.5-2.8-14.2-10.5-14.2-19.6c0-11.6,9.4-21.5,21-21.5h77.1H-144.3z"/>
+</svg>
