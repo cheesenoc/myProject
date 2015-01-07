@@ -23,12 +23,15 @@ angular
         map: camMap
 
       update = ->
-        # newLatLng = new google.maps.LatLng $scope.position.latitude, $scope.position.longitude
-        newLatLng = if $scope.smn then new google.maps.LatLng $scope.smn.station.lat, $scope.smn.station.lng else new google.maps.LatLng 46.9, 7.47
-        camMap.setCenter newLatLng
-        camMarker.setPosition newLatLng
+        if $scope?.smn?.station?.lat
+          newLatLng = new google.maps.LatLng $scope.smn.station.lat, $scope.smn.station.lng
+          # fix see https://code.google.com/p/gmaps-api-issues/issues/detail?id=1448
+          camMarker.setPosition newLatLng
+          camMap.setCenter newLatLng
+          webcamstravel.easymap.load(camMap);
 
-        webcamstravel.easymap.load(camMap);
+      google.maps.event.addListener camMap, "idle", ->
+        google.maps.event.trigger camMap, "resize"
 
       # Watch for changes in position
       $scope.$watch "smn", ->

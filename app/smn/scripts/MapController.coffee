@@ -32,9 +32,6 @@ angular
         $scope.smns = smns
         $scope.showSpinner = false
 
-    # $scope.showWebcams = ->
-    #   # TODO MKE support show webcam button
-
     # Let's get initial location on when view is created
     # This is just to make the map targeted to current location before the view is opened
     $scope.getPosition()

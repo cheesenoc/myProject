@@ -37,27 +37,27 @@ angular
 
     # TODO MKE use this for prod
     # Method for getting user's current position now
-    # $scope.getPosition = ->
-    #   return if $scope.isGettingPosition
-    #   $scope.isGettingPosition = true
-    #   supersonic.device.geolocation.getPosition()
-    #     .then (position) ->
-    #       $scope.position = position
-    #       extendSmn smn for smn in $scope.smns
-    #     .finally ->
-    #       $scope.isGettingPosition = false
-    #
-    # # Get position on when view is shown
-    # supersonic.ui.views.current.whenVisible ->
-    #   $scope.getPosition()
+    $scope.getPosition = ->
+      return if $scope.isGettingPosition
+      $scope.isGettingPosition = true
+      supersonic.device.geolocation.getPosition()
+        .then (position) ->
+          $scope.position = position
+          extendSmn smn for smn in $scope.smns
+        .finally ->
+          $scope.isGettingPosition = false
 
-    $scope.getPosition = () ->
-      position =
-        coords:
-          latitude: 46.9
-          longitude: 7.47
-      $scope.position = position
-      extendSmn smn for smn in $scope.smns
+    # Get position on when view is shown
+    supersonic.ui.views.current.whenVisible ->
+      $scope.getPosition()
+
+    # $scope.getPosition = () ->
+    #   position =
+    #     coords:
+    #       latitude: 46.9
+    #       longitude: 7.47
+    #   $scope.position = position
+    #   extendSmn smn for smn in $scope.smns
 
     refresh()
 
