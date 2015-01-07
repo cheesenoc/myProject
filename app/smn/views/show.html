@@ -1,4 +1,4 @@
-<div ng-controller="ShowController">
+<div ng-controller="ShowController" class="showController">
   <super-navbar>
     <super-navbar-title ng-bind="smn['station'].name">
 
@@ -7,7 +7,7 @@
 
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-    <div ng-hide="showSpinner">
+    <div ng-hide="showSpinner" class="showContent">
 
        <i class="icon icon-big" ng-class="smn['icon']"></i>
 
@@ -15,11 +15,13 @@
 
        <p>sunshine in last 10': <span ng-bind="smn['sunshine']"></span>'</p>
 
-       <p><a href="http://www.lookr.com/map#ll={{smn.station.lat}},{{smn.station.lng}}&spn=0.05,0.05">check nearby webcams</a></p>
+       <!-- <p><a href="http://www.lookr.com/map#ll={{smn.station.lat}},{{smn.station.lng}}&spn=0.05,0.05">check nearby webcams</a></p> -->
 
        <p>distance: <span ng-bind="smn['distance']"></span>km</p>
 
        <p><a href="https://www.google.ch/maps/dir/{{position.coords.latitude}},{{position.coords.longitude}}/{{smn.station.lat}},{{smn.station.lng}}">get there</a></p>
+
+       <supersonic-google-maps-cam smn="smn"></supersonic-google-maps-cam>
 
        <!-- <hr>
 

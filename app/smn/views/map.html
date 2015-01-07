@@ -1,8 +1,8 @@
-<div ng-controller="MapController">
+<div ng-controller="MapController" class="mapcontroller">
 
   <supersonic-google-maps position="position" smns="smns"></supersonic-google-maps>
 
-  <div class="padding">
+  <!-- <div class="padding">
     <div class="loading-message" ng-show="isWatchingPosition || isGettingPosition">
       <img src="/icons/loading.svg" height="26" alt=""> Getting position...
     </div>
@@ -10,9 +10,9 @@
       Ready!
     </div>
 
-    <br>
+    <br> -->
 
-    <table class="geolocation-table">
+    <!-- <table class="geolocation-table">
       <tr>
         <td>Latitude</td>
         <td>{{position.latitude}}</td>
@@ -24,7 +24,8 @@
       <tr>
         <td>Accuracy</td>
         <td>{{position.accuracy}} m</td>
-      </tr>
+      </tr> -->
+
       <!-- <tr ng-hide="position.altitude == undefined">
         <td>Altitude</td>
         <td>{{position.altitude}} m</td>
@@ -41,9 +42,10 @@
         <td>Speed</td>
         <td>{{position.speed}} m/s</td>
       </tr> -->
-    </table>
 
-    <br>
+    <!-- </table> -->
+
+    <!-- <br>
 
     <button ng-click="getPosition()" class="button button-block button-positive" ng-disabled="isGettingPosition || isWatchingPosition">
       Get position
@@ -51,7 +53,8 @@
     <button ng-click="showWebcams()" class="button button-block button-positive" ng-disabled="isGettingPosition || isWatchingPosition">
       Show Webcams
     </button>
-    <p>EasyMap webcams provided by <a href="http://www.webcams.travel">webcams.travel</a></p>
-  </div>
+    <p>EasyMap webcams provided by <a href="http://www.webcams.travel">webcams.travel</a></p> -->
+
+  <!-- </div> -->
 
 </div>
