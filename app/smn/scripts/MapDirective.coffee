@@ -98,7 +98,8 @@ angular
             supersonic.ui.layers.push view
             # TODO MKE use parameter to pass id
             # http://docs.appgyver.com/supersonic/guides/navigation/navigating-between-views/layer-stack/
-        createMarker smn for smn in $scope.smns
+        if $scope.smns.length > 0
+          createMarker smn for smn in $scope.smns
 
       # Watch for changes in position
       $scope.$watch "position", ->

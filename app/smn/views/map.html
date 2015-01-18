@@ -1,6 +1,8 @@
 <div ng-controller="MapController" class="mapcontroller">
 
-  <supersonic-google-maps position="position" smns="smns"></supersonic-google-maps>
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner" class="showMap">
+    <supersonic-google-maps position="position" smns="smns"></supersonic-google-maps>
 
   <!-- <div class="padding">
     <div class="loading-message" ng-show="isWatchingPosition || isGettingPosition">
@@ -57,4 +59,5 @@
 
   <!-- </div> -->
 
+  </div>
 </div>

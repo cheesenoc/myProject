@@ -12,7 +12,6 @@ angular
         $scope.$apply ->
           $scope.smns = smns
           $scope.getPosition()
-          $scope.showSpinner = false
 
     update = ->
       if document.visibilityState == "visible"
@@ -46,6 +45,7 @@ angular
           extendSmn smn for smn in $scope.smns
         .finally ->
           $scope.isGettingPosition = false
+          $scope.showSpinner = false
 
     # Get position on when view is shown
     supersonic.ui.views.current.whenVisible ->

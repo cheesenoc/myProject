@@ -24,11 +24,15 @@ angular
 
       update = ->
         if $scope?.smn?.station?.lat
+          # camMap.checkResize
           newLatLng = new google.maps.LatLng $scope.smn.station.lat, $scope.smn.station.lng
           # fix see https://code.google.com/p/gmaps-api-issues/issues/detail?id=1448
-          camMarker.setPosition newLatLng
           camMap.setCenter newLatLng
-          webcamstravel.easymap.load(camMap);
+          camMarker.setPosition newLatLng
+          webcamstravel.easymap.load(camMap)
+          # google.maps.event.trigger camMap, "resize"
+          # camMap.checkResize
+          # camMap.panTo newLatLng
 
       google.maps.event.addListener camMap, "idle", ->
         google.maps.event.trigger camMap, "resize"

@@ -8,6 +8,11 @@
   font-size: 100px;
 }
 
+.super-ios7-sunny-outline {
+  color: grey;
+  background-color: white;
+}
+
 /*********************************
 * Sensors / Geolocation
 ********************************/
@@ -28,7 +33,7 @@
   height: 100%;
 }
 
-.showController, .padding, .showContent {
+.showController, .padding, .showContent, .showMap {
   height: 100%;
 }
 .google-maps-container-cam {

@@ -13,6 +13,21 @@ angular
     # Are we currently gettting position?
     $scope.isGettingPosition = false
 
+    refresh = ->
+      Smn.all().whenChanged (smns) ->
+        $scope.$apply ->
+          $scope.smns = smns
+          # Let's get initial location on when view is created
+          # This is just to make the map targeted to current location before the view is opened
+          $scope.getPosition()
+
+    update = ->
+      if document.visibilityState == "visible"
+        $scope.showSpinner = true
+        refresh()
+
+    document.addEventListener "visibilitychange", update, false
+
     # Method for getting user's current position now
     $scope.getPosition = ->
       return if $scope.isGettingPosition
@@ -22,16 +37,10 @@ angular
           $scope.position = position.coords
         .finally ->
           $scope.isGettingPosition = false
+          $scope.showSpinner = false
 
     # Get position on when view is shown
     supersonic.ui.views.current.whenVisible ->
       $scope.getPosition()
 
-    Smn.all().whenChanged (smns) ->
-      $scope.$apply ->
-        $scope.smns = smns
-        $scope.showSpinner = false
-
-    # Let's get initial location on when view is created
-    # This is just to make the map targeted to current location before the view is opened
-    $scope.getPosition()
+    refresh()
