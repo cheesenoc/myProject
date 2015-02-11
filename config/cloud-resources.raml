@@ -16,8 +16,8 @@ traits:
           default: 29819
 
 schemas:
-  - superheros: '{"$schema":"http://json-schema.org/schema","title":"superhero collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical superhero representation","properties":{"name":{"type":"string"},"alter_ego":{"type":"string"},"publisher":{"type":"string"}},"required":[]}}}}'
-  - superhero: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical superhero representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"alter_ego":{"type":"string"},"publisher":{"type":"string"}},"required":[]}}}'
+  - superhero_collection: '{"$schema":"http://json-schema.org/schema","title":"superhero collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical superhero representation","properties":{"name":{"type":"string"},"alter_ego":{"type":"string"},"publisher":{"type":"string"}},"required":[]}}}}'
+  - superhero_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical superhero representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"alter_ego":{"type":"string"},"publisher":{"type":"string"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -36,7 +36,7 @@ resourceTypes:
               }
             body:
               application/json:
-                schema: <<resourcePathName>> # e.g cars
+                schema: <<resourcePathName>>_collection # e.g cars
       post:
         description: |
           {
@@ -45,7 +45,7 @@ resourceTypes:
           }
         body:
           application/json:
-            schema: <<resourcePathName | !singularize>>
+            schema: <<resourcePathName>>_member
         responses:
           200:
             description: |
@@ -54,7 +54,7 @@ resourceTypes:
               }
             body:
               application/json:
-                schema: <<resourcePathName | !singularize>> # e.g. car
+                schema: <<resourcePathName>>_member # e.g. car
 
   - dolan_db_member:
       usage: This resourceType should be used for any built.io item
@@ -72,7 +72,7 @@ resourceTypes:
               }
             body:
               application/json:
-                schema: <<resourcePathName>> # e.g. car
+                schema: <<resourcePathName>>_member # e.g. car
       put:
         description: |
           {
@@ -81,7 +81,7 @@ resourceTypes:
           }
         body:
           application/json:
-            schema: <<resourcePathName | !singularize>>
+            schema: <<resourcePathName>>_member
         responses:
           200:
             description: |
@@ -90,7 +90,7 @@ resourceTypes:
               }
             body:
               application/json:
-                schema: <<resourcePathName>>
+                schema: <<resourcePathName>>_member
       delete:
         description: |
           {
@@ -98,7 +98,6 @@ resourceTypes:
           }
         responses:
           200:
-      
 
 
 /superhero:
@@ -123,18 +122,18 @@ resourceTypes:
       {
         "action": "create"
       }
-  
+
     responses:
       200:
         description: |
           {
           }
-  
+
         body:
           application/json:
             schema: |
               {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}
-  
+
 
   /.json:
     get:
@@ -143,19 +142,19 @@ resourceTypes:
         {
           "action": "collection"
         }
-    
+
       responses:
         200:
           description: |
             {
               "rootKey": "beers"
             }
-    
+
           body:
             application/json:
               schema: |
                 {"$schema":"http://json-schema.org/schema","title":"beer collection","type":"object","properties":{"beers":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}}}}
-    
+
 
   /{id}.json:
     get:
@@ -164,18 +163,18 @@ resourceTypes:
         {
           "action": "find"
         }
-    
+
       responses:
         200:
           description: |
             {
             }
-    
+
           body:
             application/json:
               schema: |
                 {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}
-    
+
 
   /{id}:
     put:
@@ -184,25 +183,25 @@ resourceTypes:
         {
           "action": "update"
         }
-    
+
       responses:
         200:
           description: |
             {
             }
-    
+
           body:
             application/json:
               schema: |
                 {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical beer representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"abv":{"type":"string"},"created_at":{"type":"string"},"updated_at":{"type":"string"},"brewery":{"type":"object"}},"required":[]}
-    
+
     delete:
       is: [ securedBySteroidsApiKey ]
       description: |
         {
           "action": "destroy"
         }
-    
+
       responses:
         200:
 
@@ -218,36 +217,36 @@ resourceTypes:
       {
         "action": "collection"
       }
-  
+
     responses:
       200:
         description: |
           {
           }
-  
+
         body:
           application/json:
             schema: |
-              {"$schema":"http://json-schema.org/schema","title":"smn collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}}
-  
+              {"$schema":"http://json-schema.org/schema","title":"smn collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"elevation":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}}
+
   post:
     is: [ securedBySteroidsApiKey ]
     description: |
       {
         "action": "create"
       }
-  
+
     responses:
       200:
         description: |
           {
           }
-  
+
         body:
           application/json:
             schema: |
-              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
-  
+              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"elevation":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
+
 
   /{id}:
     get:
@@ -256,44 +255,42 @@ resourceTypes:
         {
           "action": "find"
         }
-    
+
       responses:
         200:
           description: |
             {
             }
-    
+
           body:
             application/json:
               schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
-    
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"elevation":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
+
     put:
       is: [ securedBySteroidsApiKey ]
       description: |
         {
           "action": "update"
         }
-    
+
       responses:
         200:
           description: |
             {
             }
-    
+
           body:
             application/json:
               schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
-    
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical smn representation","properties":{"station":{"type":"object"},"code":{"type":"string"},"dateTime":{"type":"string"},"temperature":{"type":"string"},"elevation":{"type":"string"},"sunshine":{"type":"string"},"precipitation":{"type":"string"},"windDirection":{"type":"string"},"windSpeed":{"type":"string"},"qnhPressure":{"type":"string"},"gustPeak":{"type":"string"},"humidity":{"type":"string"},"qfePressure":{"type":"string"},"qffPressure":{"type":"string"}},"required":[]}
+
     delete:
       is: [ securedBySteroidsApiKey ]
       description: |
         {
           "action": "destroy"
         }
-    
+
       responses:
         200:
-
-

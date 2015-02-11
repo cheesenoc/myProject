@@ -9,51 +9,66 @@
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner" class="showContent">
 
-       <i class="icon icon-big" ng-class="smn['icon']"></i>
+      <div class="row">
+        <div class="col">
+          <p><b><span ng-bind="smn['sunshine']"></span>'</b> of sunshine in last 10'</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <i class="icon icon-big" ng-class="smn['icon']"></i>
+        </div>
+        <div class="col">
+          <p>Temperature: <b><span ng-bind="smn['temperature']"></span>&deg;</b></p>
 
-       <p>temperature: <span ng-bind="smn['temperature']"></span>&deg;</p>
+          <!-- <p><a href="http://www.lookr.com/map#ll={{smn.station.lat}},{{smn.station.lng}}&spn=0.05,0.05">check nearby webcams</a></p> -->
+          <p>Altitude: <b><span ng-bind="smn['station'].elevation"></span>m</b></p>
 
-       <p>sunshine in last 10': <span ng-bind="smn['sunshine']"></span>'</p>
+          <p>Distance: <b><span ng-bind="smn['distance']"></span>km</b></p>
 
-       <!-- <p><a href="http://www.lookr.com/map#ll={{smn.station.lat}},{{smn.station.lng}}&spn=0.05,0.05">check nearby webcams</a></p> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
 
-       <p>distance: <span ng-bind="smn['distance']"></span>km</p>
+          <p><a href="https://www.google.ch/maps/dir/{{position.coords.latitude}},{{position.coords.longitude}}/{{smn.station.lat}},{{smn.station.lng}}">Get me there with GoogleMaps</a></p>
 
-       <p><a href="https://www.google.ch/maps/dir/{{position.coords.latitude}},{{position.coords.longitude}}/{{smn.station.lat}},{{smn.station.lng}}">get there</a></p>
+        </div>
+      </div>
 
-       <supersonic-google-maps-cam smn="smn"></supersonic-google-maps-cam>
+      <supersonic-google-maps-cam smn="smn"></supersonic-google-maps-cam>
 
-       <!-- <hr>
+      <!-- <hr>
 
-       <p>code: <span ng-bind="smn['code']"></span></p>
+      <p>code: <span ng-bind="smn['code']"></span></p>
 
-       <p>dateTime: <span ng-bind="smn['dateTime']"></span></p>
+      <p>dateTime: <span ng-bind="smn['dateTime']"></span></p>
 
-       <p>precipitation: <span ng-bind="smn['precipitation']"></span></p>
+      <p>precipitation: <span ng-bind="smn['precipitation']"></span></p>
 
-       <p>windDirection: <span ng-bind="smn['windDirection']"></span></p>
+      <p>windDirection: <span ng-bind="smn['windDirection']"></span></p>
 
-       <p>windSpeed: <span ng-bind="smn['windSpeed']"></span></p>
+      <p>windSpeed: <span ng-bind="smn['windSpeed']"></span></p>
 
-       <p>qnhPressure: <span ng-bind="smn['qnhPressure']"></span></p>
+      <p>qnhPressure: <span ng-bind="smn['qnhPressure']"></span></p>
 
-       <p>gustPeak: <span ng-bind="smn['gustPeak']"></span></p>
+      <p>gustPeak: <span ng-bind="smn['gustPeak']"></span></p>
 
-       <p>humidity: <span ng-bind="smn['humidity']"></span></p>
+      <p>humidity: <span ng-bind="smn['humidity']"></span></p>
 
-       <p>qfePressure: <span ng-bind="smn['qfePressure']"></span></p>
+      <p>qfePressure: <span ng-bind="smn['qfePressure']"></span></p>
 
-       <p>qffPressure: <span ng-bind="smn['qffPressure']"></span></p> -->
+      <p>qffPressure: <span ng-bind="smn['qffPressure']"></span></p> -->
 
       <!-- <super-modal-show location="smn#edit?id={{ smn.id }}">
-        <button class="button button-block button-positive">
-          Edit
-        </button>
-      </super-modal-show>
+      <button class="button button-block button-positive">
+      Edit
+    </button>
+  </super-modal-show>
 
-      <button ng-click="remove(smn.id)" class="button button-block button-negative">
-        Remove
-      </button> -->
-    </div>
-  </div>
+  <button ng-click="remove(smn.id)" class="button button-block button-negative">
+  Remove
+</button> -->
+</div>
+</div>
 </div>

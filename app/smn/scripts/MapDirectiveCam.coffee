@@ -13,7 +13,7 @@ angular
 
       # Create map object on the map element
       camMap = new google.maps.Map cel,
-        zoom: 10
+        zoom: 11
         mapTypeId: google.maps.MapTypeId.ROADMAP
         disableDefaultUI: true
         draggable: true
@@ -27,9 +27,11 @@ angular
           # camMap.checkResize
           newLatLng = new google.maps.LatLng $scope.smn.station.lat, $scope.smn.station.lng
           # fix see https://code.google.com/p/gmaps-api-issues/issues/detail?id=1448
-          camMap.setCenter newLatLng
           camMarker.setPosition newLatLng
+          camMap.setCenter newLatLng
           webcamstravel.easymap.load(camMap)
+          camMap.panBy -150, -150
+          # map.panTo camMarker.getPosition()
           # google.maps.event.trigger camMap, "resize"
           # camMap.checkResize
           # camMap.panTo newLatLng
