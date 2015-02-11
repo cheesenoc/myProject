@@ -14,12 +14,12 @@ angular
     $scope.isGettingPosition = false
 
     refresh = ->
-      Smn.all().whenChanged (smns) ->
-        $scope.$apply ->
-          $scope.smns = smns
+      # Smn.all().whenChanged (smns) ->
+      #   $scope.$apply ->
+      #     $scope.smns = smns
           # Let's get initial location on when view is created
           # This is just to make the map targeted to current location before the view is opened
-          $scope.getPosition()
+      $scope.getPosition()
 
     update = ->
       if document.visibilityState == "visible"
@@ -39,8 +39,17 @@ angular
           $scope.isGettingPosition = false
           $scope.showSpinner = false
 
-    # Get position on when view is shown
-    supersonic.ui.views.current.whenVisible ->
-      $scope.getPosition()
+    # # Get position on when view is shown
+    # supersonic.ui.views.current.whenVisible ->
+    #   $scope.getPosition()
+
+    Smn.all().whenChanged (smns) ->
+      $scope.$apply ->
+        $scope.smns = smns
+        $scope.showSpinner = false
+
+    # Let's get initial location on when view is created
+    # This is just to make the map targeted to current location before the view is opened
+    # $scope.getPosition()
 
     refresh()

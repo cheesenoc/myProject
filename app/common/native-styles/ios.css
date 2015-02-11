@@ -35,7 +35,7 @@ tab-bar tab-bar-item:selected {
 }
 
 tab-bar-item#list {
-  background-image: url(icons/list.svg);
+  background-image: url(icons/home.svg);
 }
 
 tab-bar-item#map {
