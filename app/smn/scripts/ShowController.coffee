@@ -33,4 +33,5 @@ angular
       $scope.dataId = values.id
       _refreshViewData()
 
+    _refreshViewData()
   )

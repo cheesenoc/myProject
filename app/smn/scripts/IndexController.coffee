@@ -47,17 +47,20 @@ angular
           $scope.isGettingPosition = false
           $scope.showSpinner = false
 
-    # Get position on when view is shown
-    supersonic.ui.views.current.whenVisible ->
-      $scope.getPosition()
-
-    # $scope.getPosition = () ->
+    # $scope.getPosition = ->
     #   position =
     #     coords:
     #       latitude: 46.9
     #       longitude: 7.47
     #   $scope.position = position
     #   extendSmn smn for smn in $scope.smns
+    #   $scope.showSpinner = false
+
+    # Get position on when view is shown
+    supersonic.ui.views.current.whenVisible ->
+      $scope.getPosition()
+      # TODO MKE: disable navbar
+      # supersonic.ui.navigationBar.hide()
 
     refresh()
 

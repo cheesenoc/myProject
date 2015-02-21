@@ -22,8 +22,9 @@
     <ul class="list" ng-hide="smns.length == 0">
 
       <super-navigate location="smn#show" data-params-id="{{ smn.id }}" ng-repeat="smn in smns | orderBy:predicate">
-        <li class="item item-icon-left item-icon-right">
-          <i class="icon" ng-class="smn['icon']"></i>
+        <li class="item item-icon-right">
+          <!-- <img src="../../icons/super-ios7-cloud-outline.svg" height="36px"> -->
+          <i class="icon-small" ng-class="smn['icon']">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
           <span ng-bind="smn['station'].name"></span>
           <span class="item-note">km</span>
           <span class="item-note" ng-bind="smn['distance']"></span>

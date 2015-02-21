@@ -16,7 +16,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <i class="icon icon-big" ng-class="smn['icon']"></i>
+          <div class="icon-big" ng-class="smn['icon']"></div>
         </div>
         <div class="col">
           <p>Temperature: <b><span ng-bind="smn['temperature']"></span>&deg;</b></p>
@@ -31,6 +31,8 @@
       <div class="row">
         <div class="col">
 
+          <p><a href="http://www.tagesanzeiger.ch/wetter/lokalprognose/ort.html?name={{smn.station.name}}">Show me hourly weather forecast</a></p>
+          <!-- TODO MKE get weather forecast -->
           <p><a href="https://www.google.ch/maps/dir/{{position.coords.latitude}},{{position.coords.longitude}}/{{smn.station.lat}},{{smn.station.lng}}">Get me there with GoogleMaps</a></p>
 
         </div>

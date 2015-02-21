@@ -15,13 +15,13 @@ angular
 
     Icon = (sunshine) ->
       if sunshine >= 9
-        return 'super-ios7-sunny-outline'
+        return 'svg-ios7-sunny-outline'
       else if sunshine >= 5
-        return 'super-ios7-partlysunny-outline'
+        return 'svg-ios7-partlysunny-outline'
       else if sunshine >= 2
-        return 'super-ios7-cloudy-outline'
+        return 'svg-ios7-cloudy-outline'
       else
-        return 'super-ios7-cloud-outline'
+        return 'svg-ios7-cloud-outline'
 
     Haversine: Haversine
     Icon: Icon

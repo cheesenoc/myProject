@@ -5,12 +5,24 @@
 }
 
 .icon-big {
-  font-size: 100px;
+  width: 84%;
+  height: 84px;
+}
+
+.icon-small {
+  width: 40%;
+  height: 30px;
 }
 
 .super-ios7-sunny-outline {
   color: grey;
   background-color: white;
+}
+
+.svg-ios7-cloud-outline {
+  background-image: url("/icons/super-ios7-cloud-outline.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*********************************
