@@ -18,10 +18,36 @@
   color: grey;
   background-color: white;
 }
-
 .svg-ios7-cloud-outline {
   background-image: url("/icons/super-ios7-cloud-outline.svg");
   background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.svg-ios7-cloudy-outline {
+  background-image: url("/icons/super-ios7-cloudy-outline.svg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.svg-ios7-partlysunny-outline {
+  background-image: url("/icons/super-ios7-partlysunny-outline.svg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.svg-ios7-sunny-outline {
+  background-image: url("/icons/super-ios7-sunny-outline.svg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
