@@ -65,6 +65,26 @@ angular
       demoMarker = new google.maps.Marker
         map: demoMap
 
+      newMap = ->
+        demoMap = new google.maps.Map el,
+          zoom: 9
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          disableDefaultUI: true
+          draggable: true
+
+        # Create map marker
+        demoAccuracyCircle = new google.maps.Circle
+          map: demoMap
+          fillColor: "#00B5FF"
+          fillOpacity: 0
+          strokeColor: "#00B5FF"
+          strokeOpacity: 0.5
+          strokeWeight: 2
+
+        # Create map marker
+        demoMarker = new google.maps.Marker
+          map: demoMap
+
       # Method for updating location
       updateLocation = ->
         newLatLng = new google.maps.LatLng $scope.position.latitude, $scope.position.longitude
@@ -73,7 +93,6 @@ angular
         demoAccuracyCircle.setCenter newLatLng
         demoAccuracyCircle.setRadius $scope.position.accuracy
         demoMap.panBy -150, -300
-
 
       drawStations = ->
         #http://mapicons.nicolasmollet.com/category/markers/nature/weather/
@@ -99,6 +118,8 @@ angular
             supersonic.ui.layers.push view
             # TODO MKE use parameter to pass id
             # http://docs.appgyver.com/supersonic/guides/navigation/navigating-between-views/layer-stack/
+        newMap()
+        updateLocation()
         if $scope.smns.length > 0
           createMarker smn for smn in $scope.smns
 
